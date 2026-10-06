@@ -520,8 +520,17 @@
         const iframeContainer = document.getElementById('iframeContainer');
 
         function openVideoModal(videoId) {
-            // Inject the iframe dynamically to prevent background playback when closed
-            iframeContainer.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+            // تشغيل الفيديو داخل الموقع عبر Iframe المدمج
+            iframeContainer.innerHTML = `
+                <iframe class="absolute top-0 left-0 w-full h-full rounded-b-2xl" 
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            `;
             
             videoModal.classList.remove('hidden');
             // Force browser reflow to allow transition to work
@@ -535,10 +544,10 @@
             videoModal.classList.add('opacity-0');
             videoModalContent.classList.add('scale-95');
             
-            // Wait for transition to finish before hiding and clearing iframe
+            // Wait for transition to finish before hiding and clearing content
             setTimeout(() => {
                 videoModal.classList.add('hidden');
-                iframeContainer.innerHTML = ''; // Clear iframe to stop audio
+                iframeContainer.innerHTML = ''; // Clear content
             }, 300);
         }
 
