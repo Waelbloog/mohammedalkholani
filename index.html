@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف التعريفي | الفنان محمد الخولاني</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        gold: { 300: '#FDE047', 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' },
+                        dark: { 900: '#0a0a0a', 800: '#171717', 700: '#262626' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* الأساسيات */
+        body { 
+            margin: 0; 
+            overflow-x: hidden; 
+            background-color: #0a0a0a; 
+            color: #F3F4F6;
+        }
+
+        /* 3D Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* حاوية المحتوى فوق الثري دي */
+        #content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* تأثيرات الزجاج (Glassmorphism) */
+        .glass-card {
+            background: rgba(23, 23, 23, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(251, 191, 36, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* النصوص المتوهجة */
+        .gradient-text {
+            background: linear-gradient(to left, #FDE047, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        /* أنيميشن الصورة الشخصية */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); box-shadow: 0 0 20px rgba(245,158,11,0.4); }
+            50% { transform: translateY(-10px) rotate(2deg); box-shadow: 0 0 40px rgba(245,158,11,0.7); }
+            100% { transform: translateY(0px) rotate(0deg); box-shadow: 0 0 20px rgba(245,158,11,0.4); }
+        }
+        .profile-pic {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* أنيميشن الظهور عند التمرير (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* نبضات للأزرار المهمة */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        .btn-pulse { animation: pulse-glow 2s infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #F59E0B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D97706; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main Content Wrapper -->
+    <div id="content-wrapper" class="pb-20">
+        
+        <!-- Hero Section -->
+        <header class="relative pt-24 pb-16 text-center px-4 overflow-hidden reveal">
+            <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+                <!-- Profile Image with Animations -->
+                <div class="relative mb-8 group cursor-pointer">
+                    <div class="absolute inset-0 bg-gold-500 rounded-full blur-xl opacity-20 group-hover:opacity-50 transition duration-500"></div>
+                    <img src="channels4_profile (1).jpg" alt="محمد الخولاني" class="profile-pic w-56 h-56 object-cover rounded-full border-2 border-gold-400 relative z-10">
+                    <!-- Music Note decorative element -->
+                    <div class="absolute -bottom-2 -right-2 bg-dark-800 text-gold-400 w-12 h-12 rounded-full flex items-center justify-center border border-gold-600 z-20 shadow-lg">
+                        <i class="fas fa-music text-xl"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 gradient-text tracking-tight">محمد الخولاني</h1>
+                <p class="text-2xl text-gray-300 font-light mb-8 tracking-wide">مغني <span class="text-gold-500">•</span> ملحن <span class="text-gold-500">•</span> عازف عود</p>
+                
+                <div class="flex justify-center flex-wrap gap-4 text-sm font-semibold">
+                    <span class="glass-card text-gold-300 px-6 py-2.5 rounded-full"><i class="fas fa-map-marker-alt ml-2"></i>صنعاء، اليمن (مواليد 1999)</span>
+                    <span class="glass-card text-gold-300 px-6 py-2.5 rounded-full"><i class="fas fa-graduation-cap ml-2"></i>بكالوريوس إعلام</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
+            
+            <!-- Right Column (Bio & Experience) -->
+            <div class="lg:col-span-8 space-y-10">
+                
+                <!-- Biography -->
+                <section class="glass-card rounded-3xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 ml-4">
+                            <i class="fas fa-user-astronaut text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">الخلفية الفنية</h2>
+                    </div>
+                    <div class="text-gray-300 leading-relaxed space-y-4 text-lg">
+                        <p>
+                            يُعد من أبرز الأصوات الشابة التي تسعى لتطوير وتجديد الأغنية اليمنية الحديثة. يجمع أداؤه بين أصالة التراث اليمني وروح العصر، ويمتلك <strong class="text-gold-400 font-normal">خامة صوتية طربية بامتياز</strong>.
+                        </p>
+                        <p>
+                            نمت موهبته منذ نعومة أظافره عبر الأنشطة المدرسية والمسرح، وتطورت تدريجياً ليذيع صيته في إحياء الأعراس والمناسبات العامة والخاصة، وصولاً إلى الاحتراف وإصدار الأعمال الخاصة التي لاقت صدى واسعاً.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Important Milestones -->
+                <section class="glass-card rounded-3xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 ml-4">
+                            <i class="fas fa-star text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">أهم المحطات والتعاونات</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-dark-800/50 p-5 rounded-2xl border border-white/5 hover:border-gold-500/30 transition">
+                            <i class="fas fa-microphone text-gold-500 text-2xl mb-3"></i>
+                            <h3 class="font-bold text-white mb-2">غناء مشترك</h3>
+                            <p class="text-gray-400 text-sm">المشاركة مع كبار فناني اليمن، وفي مقدمتهم الفنان حمود السمه والفنان حسين محب.</p>
+                        </div>
+                        <div class="bg-dark-800/50 p-5 rounded-2xl border border-white/5 hover:border-gold-500/30 transition">
+                            <i class="fas fa-users text-gold-500 text-2xl mb-3"></i>
+                            <h3 class="font-bold text-white mb-2">دويتو ناجح</h3>
+                            <p class="text-gray-400 text-sm">مع الفنانة الشابة ماريا قحطان في أغنية <span class="text-gold-300">"يُمه وياحنجا"</span>.</p>
+                        </div>
+                        <div class="bg-dark-800/50 p-5 rounded-2xl border border-white/5 hover:border-gold-500/30 transition">
+                            <i class="fas fa-handshake text-gold-500 text-2xl mb-3"></i>
+                            <h3 class="font-bold text-white mb-2">تعاون بارز</h3>
+                            <p class="text-gray-400 text-sm">مع إبراهيم فضل في أغنية <span class="text-gold-300">"حلاه يشدف"</span> التي لاقت انتشاراً واسعاً.</p>
+                        </div>
+                        <div class="bg-dark-800/50 p-5 rounded-2xl border border-white/5 hover:border-gold-500/30 transition">
+                            <i class="fas fa-tv text-gold-500 text-2xl mb-3"></i>
+                            <h3 class="font-bold text-white mb-2">شارات المسلسلات</h3>
+                            <p class="text-gray-400 text-sm">غناء تتر المسلسل اليمني "درة" (أغنية: <span class="text-gold-300">يا طير</span>).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Live Performances & Show Info -->
+                <section class="glass-card rounded-3xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 ml-4">
+                            <i class="fas fa-guitar text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">عروض المسرح (Live Shows)</h2>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-gold-300 mb-3">المشاركات الدولية والمحلية</h3>
+                        <p class="text-gray-300 leading-relaxed border-r-4 border-gold-500 pr-4">
+                            تألق في العديد من المهرجانات والحفلات خارج اليمن، لاسيما في المملكة العربية السعودية (الرياض، جدة) وجمهورية مصر العربية (القاهرة)، حيث قدم فعاليات فنية وسياحية حظيت بتغطية إعلامية مميزة، إلى جانب إحيائه لأضخم المهرجانات الجماهيرية في اليمن.
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-dark-800 to-dark-900 p-6 rounded-2xl border border-gold-500/20 relative overflow-hidden">
+                        <!-- Decorative element -->
+                        <i class="fas fa-headphones-alt absolute -top-4 -left-4 text-7xl text-white/5"></i>
+                        
+                        <h3 class="text-xl font-bold text-white mb-6">تفاصيل العرض التقنية والفنية</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                            <div class="flex flex-col">
+                                <span class="text-gray-500 text-sm mb-1 uppercase tracking-wider">مدة العرض</span>
+                                <span class="text-lg font-bold text-gold-400">60 - 90 دقيقة</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-500 text-sm mb-1 uppercase tracking-wider">شكل الفرقة</span>
+                                <span class="text-lg font-bold text-gold-400">Band كامل / تخت شرقي / عود</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-500 text-sm mb-1 uppercase tracking-wider">عدد الأعضاء</span>
+                                <span class="text-lg font-bold text-gold-400">يُحدد حسب رؤية وحجم الحفل</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-500 text-sm mb-1 uppercase tracking-wider">المتطلبات التقنية (Tech Rider)</span>
+                                <span class="text-lg font-bold text-green-400"><i class="fas fa-check-circle ml-1"></i> جاهز ومرفق بالملفات</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Press Kit Link -->
+                <section class="reveal">
+                    <div class="bg-gradient-to-l from-gold-600 via-gold-400 to-yellow-300 rounded-3xl p-[2px] btn-pulse shadow-[0_0_30px_rgba(245,158,11,0.3)] hover:shadow-[0_0_50px_rgba(245,158,11,0.6)] transition-shadow duration-500">
+                        <div class="bg-dark-900 rounded-[22px] p-8 text-center flex flex-col items-center justify-center relative overflow-hidden h-full">
+                            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+                            <i class="fas fa-cloud-download-alt text-4xl text-gold-400 mb-4 relative z-10"></i>
+                            <h2 class="text-2xl font-bold text-white mb-3 relative z-10">المركز الإعلامي وإحصائيات الجمهور (EPK)</h2>
+                            <p class="text-gray-400 mb-6 max-w-xl mx-auto relative z-10">يحتوي الرابط السحابي على صور عالية الدقة، مقاطع فيديو حصرية للحفلات، وإحصائيات الاستماع والمتابعة (Insights) خاصة في السعودية والوطن العربي.</p>
+                            <a href="https://drive.google.com/drive/folders/1O3GxvCNCXiYoSC4pxb_VXnZQbxHWDA3f?usp=sharing" target="_blank" class="relative z-10 inline-flex items-center justify-center bg-gradient-to-r from-gold-500 to-gold-400 text-dark-900 font-bold text-lg py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300">
+                                <i class="fas fa-folder-open ml-3"></i> تصفح الملفات السحابية
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Left Column (Styles, Discography, Links) -->
+            <div class="lg:col-span-4 space-y-8">
+                
+                <!-- Musical Styles -->
+                <section class="glass-card rounded-3xl p-6 reveal">
+                    <h2 class="text-xl font-bold text-white mb-5 flex items-center border-b border-gray-700 pb-3">
+                        <i class="fas fa-palette text-gold-400 ml-3"></i> الألوان الغنائية
+                    </h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-dark-700 hover:bg-gold-500 hover:text-dark-900 transition-colors cursor-default text-gray-200 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-600">التراث المطور</span>
+                        <span class="bg-dark-700 hover:bg-gold-500 hover:text-dark-900 transition-colors cursor-default text-gray-200 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-600">الصنعاني الأصيل</span>
+                        <span class="bg-dark-700 hover:bg-gold-500 hover:text-dark-900 transition-colors cursor-default text-gray-200 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-600">الطرب الكلاسيكي</span>
+                        <span class="bg-dark-700 hover:bg-gold-500 hover:text-dark-900 transition-colors cursor-default text-gray-200 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-600">الجلسات (عود)</span>
+                        <span class="bg-dark-700 hover:bg-gold-500 hover:text-dark-900 transition-colors cursor-default text-gray-200 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-600">اللون الخليجي</span>
+                    </div>
+                </section>
+
+                <!-- Discography -->
+                <section class="glass-card rounded-3xl p-6 reveal">
+                    <h2 class="text-xl font-bold text-white mb-5 flex items-center border-b border-gray-700 pb-3">
+                        <i class="fas fa-compact-disc text-gold-400 ml-3"></i> أبرز الأعمال (Discography)
+                    </h2>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center mb-3">
+                            <span class="w-2 h-2 rounded-full bg-gold-400 ml-2"></span>
+                            <h3 class="text-gold-300 font-bold text-lg">غناء</h3>
+                        </div>
+                        <div class="bg-dark-800/50 rounded-xl p-4 border border-white/5">
+                            <ul class="text-gray-300 text-sm space-y-2.5">
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> حلاه يشدف</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> يُمه وياحنجا</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> يا طير (تتر مسلسل)</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> دلع صنعاني & بحجر الله</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> يا صاحبي & طاسة</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> ملامة & عادي عادي</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> أيوه أنت & آسف بالغلط</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> فوانيس رمضان & ورجع رمضان</li>
+                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> ما قد خُلق مثل النبي</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <span class="w-2 h-2 rounded-full bg-gold-400 ml-2"></span>
+                            <h3 class="text-gold-300 font-bold text-lg">ألحان (Compositions)</h3>
+                        </div>
+                        <div class="bg-dark-800/50 rounded-xl p-4 border border-white/5">
+                            <ul class="text-gray-300 text-sm space-y-2.5 flex flex-wrap gap-x-4">
+                                <li><i class="fas fa-music text-xs text-gray-500 ml-1"></i> حلاه يشدف</li>
+                                <li><i class="fas fa-music text-xs text-gray-500 ml-1"></i> آسف بالغلط</li>
+                                <li><i class="fas fa-music text-xs text-gray-500 ml-1"></i> طاسة</li>
+                                <li><i class="fas fa-music text-xs text-gray-500 ml-1"></i> أيوه أنت</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Official Links (Social & Streaming) -->
+                <section class="glass-card rounded-3xl p-6 reveal">
+                    <h2 class="text-xl font-bold text-white mb-5 flex items-center border-b border-gray-700 pb-3">
+                        <i class="fas fa-link text-gold-400 ml-3"></i> المنصات الرسمية
+                    </h2>
+                    
+                    <!-- Social Media -->
+                    <div class="grid grid-cols-5 gap-2 mb-6">
+                        <a href="https://www.youtube.com/@MohammeAlkholani" target="_blank" title="YouTube" class="bg-[#FF0000]/20 border border-[#FF0000]/50 text-[#FF0000] hover:bg-[#FF0000] hover:text-white flex justify-center items-center h-12 rounded-xl transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-youtube text-xl"></i></a>
+                        
+                        <a href="https://instagram.com/m.k7olani" target="_blank" title="Instagram" class="bg-[#E1306C]/20 border border-[#E1306C]/50 text-[#E1306C] hover:bg-gradient-to-tr hover:from-[#fd5949] hover:to-[#d6249f] hover:text-white hover:border-transparent flex justify-center items-center h-12 rounded-xl transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-instagram text-xl"></i></a>
+                        
+                        <a href="https://snapchat.com/add/m.k7olani" target="_blank" title="Snapchat" class="bg-[#FFFC00]/20 border border-[#FFFC00]/50 text-[#FFFC00] hover:bg-[#FFFC00] hover:text-black flex justify-center items-center h-12 rounded-xl transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-snapchat-ghost text-xl"></i></a>
+                        
+                        <a href="https://tiktok.com/@m.k7olani" target="_blank" title="TikTok" class="bg-[#00f2fe]/10 border border-[#00f2fe]/40 text-white hover:bg-gradient-to-r hover:from-[#00f2fe] hover:to-[#4facfe] flex justify-center items-center h-12 rounded-xl transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-tiktok text-xl"></i></a>
+                        
+                        <a href="https://facebook.com/m.k7olani" target="_blank" title="Facebook" class="bg-[#1877F2]/20 border border-[#1877F2]/50 text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex justify-center items-center h-12 rounded-xl transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-facebook-f text-xl"></i></a>
+                    </div>
+
+                    <!-- Streaming Platforms -->
+                    <h3 class="text-gray-400 text-xs uppercase tracking-wider mb-3">الاستماع للموسيقى عبر:</h3>
+                    <div class="space-y-3">
+                        <a href="https://open.spotify.com/artist/12vuBgCckOxfz3gSb6pYXd" target="_blank" class="flex items-center justify-between bg-dark-800 border border-gray-700 p-4 rounded-xl hover:bg-[#1DB954] hover:border-[#1DB954] transition-all duration-300 group">
+                            <span class="text-gray-300 group-hover:text-dark-900 transition font-bold">Spotify</span>
+                            <i class="fab fa-spotify text-[#1DB954] group-hover:text-dark-900 text-2xl transition"></i>
+                        </a>
+                        <a href="https://play.anghami.com/artist/17198934" target="_blank" class="flex items-center justify-between bg-dark-800 border border-gray-700 p-4 rounded-xl hover:bg-[#8A2BE2] hover:border-[#8A2BE2] transition-all duration-300 group">
+                            <span class="text-gray-300 group-hover:text-white transition font-bold">Anghami</span>
+                            <i class="fas fa-play-circle text-[#8A2BE2] group-hover:text-white text-2xl transition"></i>
+                        </a>
+                        <a href="https://music.apple.com/us/artist/mohammed-al-kholani/1752546004" target="_blank" class="flex items-center justify-between bg-dark-800 border border-gray-700 p-4 rounded-xl hover:bg-[#FA243C] hover:border-[#FA243C] transition-all duration-300 group">
+                            <span class="text-gray-300 group-hover:text-white transition font-bold">Apple Music</span>
+                            <i class="fab fa-apple text-white text-2xl transition"></i>
+                        </a>
+                        <a href="https://music.youtube.com/channel/UCYKpLE0iY5S4Vxfwduuvp8Q" target="_blank" class="flex items-center justify-between bg-dark-800 border border-gray-700 p-4 rounded-xl hover:bg-[#FF0000] hover:border-[#FF0000] transition-all duration-300 group">
+                            <span class="text-gray-300 group-hover:text-white transition font-bold">YouTube Music</span>
+                            <i class="fab fa-youtube text-white text-2xl transition"></i>
+                        </a>
+                        <div class="grid grid-cols-2 gap-3 mt-3">
+                            <a href="https://deezer.com/us/artist/203761817" target="_blank" class="flex items-center justify-center gap-2 bg-dark-800 border border-gray-700 p-3 rounded-xl hover:bg-gray-200 hover:text-dark-900 transition-all duration-300 text-gray-300 font-semibold">
+                                <i class="fab fa-deezer text-lg"></i> Deezer
+                            </a>
+                            <a href="https://music.amazon.com/artists/B0BX75Z5TW/mohammed-al-kholani" target="_blank" class="flex items-center justify-center gap-2 bg-dark-800 border border-gray-700 p-3 rounded-xl hover:bg-[#00A8E1] hover:text-white transition-all duration-300 text-gray-300 font-semibold">
+                                <i class="fab fa-amazon text-lg"></i> Amazon
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-20 text-center text-gray-500 text-sm pb-8 reveal">
+            <div class="w-16 h-1 bg-gold-600/30 mx-auto mb-6 rounded-full"></div>
+            <p>جميع الحقوق محفوظة &copy; للفنان محمد الخولاني 2026</p>
+            <p class="mt-2 text-xs opacity-50">Interactive EPK Design</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll Reveal Animation Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Trigger only once
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+
+    <script>
+        // Three.js 3D Background - Golden Stardust / Concert Lights
+        window.onload = function() {
+            const canvas = document.getElementById('bg-canvas');
+            
+            // Scene setup
+            const scene = new THREE.Scene();
+            // Add subtle fog to blend particles into the dark background
+            scene.fog = new THREE.FogExp2(0x0a0a0a, 0.001);
+
+            // Camera setup
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+
+            // Renderer setup
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Particle System (Stardust)
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1500; // Number of particles
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            const colorsArray = new Float32Array(particlesCount * 3);
+
+            const color1 = new THREE.Color(0xFBBF24); // Gold 400
+            const color2 = new THREE.Color(0xFDE047); // Gold 300
+            const color3 = new THREE.Color(0x78350f); // Dark Gold/Brown
+
+            for(let i = 0; i < particlesCount * 3; i+=3) {
+                // Spread particles randomly in a wide area
+                posArray[i] = (Math.random() - 0.5) * 100;     // x
+                posArray[i+1] = (Math.random() - 0.5) * 100;   // y
+                posArray[i+2] = (Math.random() - 0.5) * 50;    // z
+
+                // Randomize colors between the 3 gold shades
+                const mixedColor = color1.clone().lerp(Math.random() > 0.5 ? color2 : color3, Math.random());
+                colorsArray[i] = mixedColor.r;
+                colorsArray[i+1] = mixedColor.g;
+                colorsArray[i+2] = mixedColor.b;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+
+            // Create circular texture for particles instead of square
+            const circleTexture = new THREE.TextureLoader().load('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOElEQVQYV2NkYGAwYkAD////Z4QzEQTwhTExMDJggv/RBBFF8CngE0QWQBdEl8QniC6JLQixCa8bABtVE4XbJ/B3AAAAAElFTkSuQmCC');
+
+            // Material
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.3,
+                vertexColors: true,
+                map: circleTexture,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending // Creates a glowing effect
+            });
+
+            // Mesh
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // Mouse interaction logic
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            // Handle Window Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Animation Loop
+            const clock = new THREE.Clock();
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const elapsedTime = clock.getElapsedTime();
+
+                // Slow constant rotation
+                particlesMesh.rotation.y = elapsedTime * 0.03;
+                particlesMesh.rotation.x = elapsedTime * 0.01;
+
+                // Smooth mouse follow effect (parallax)
+                targetX = mouseX * 0.001;
+                targetY = mouseY * 0.001;
+                
+                particlesMesh.rotation.y += 0.05 * (targetX - particlesMesh.rotation.y);
+                particlesMesh.rotation.x += 0.05 * (targetY - particlesMesh.rotation.x);
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        };
+    </script>
+</body>
+</html>
