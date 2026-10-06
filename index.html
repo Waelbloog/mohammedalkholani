@@ -212,10 +212,39 @@
                     </div>
                     
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-gold-300 mb-3">المشاركات الدولية والمحلية</h3>
-                        <p class="text-gray-300 leading-relaxed border-r-4 border-gold-500 pr-4">
-                            تألق في العديد من المهرجانات والحفلات خارج اليمن، لاسيما في المملكة العربية السعودية (الرياض، جدة) وجمهورية مصر العربية (القاهرة)، حيث قدم فعاليات فنية وسياحية حظيت بتغطية إعلامية مميزة، إلى جانب إحيائه لأضخم المهرجانات الجماهيرية في اليمن.
-                        </p>
+                        <h3 class="text-xl font-bold text-gold-300 mb-4">أبرز الحفلات والمشاركات</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- صنعاء -->
+                            <div class="bg-dark-800/50 p-4 rounded-xl border border-white/5 hover:border-gold-500/30 transition">
+                                <h4 class="text-gold-400 font-bold mb-2 flex items-center"><i class="fas fa-map-marker-alt ml-2"></i>صنعاء</h4>
+                                <ul class="text-gray-300 text-sm space-y-2 list-disc list-inside">
+                                    <li>المركز الليبي</li>
+                                    <li>فندق نارسس</li>
+                                </ul>
+                            </div>
+                            <!-- تعز -->
+                            <div class="bg-dark-800/50 p-4 rounded-xl border border-white/5 hover:border-gold-500/30 transition">
+                                <h4 class="text-gold-400 font-bold mb-2 flex items-center"><i class="fas fa-map-marker-alt ml-2"></i>تعز</h4>
+                                <ul class="text-gray-300 text-sm space-y-2 list-disc list-inside">
+                                    <li>المركز الثقافي (احتفاءً بالفنان محمد محسن عطروش)</li>
+                                </ul>
+                            </div>
+                            <!-- عدن -->
+                            <div class="bg-dark-800/50 p-4 rounded-xl border border-white/5 hover:border-gold-500/30 transition">
+                                <h4 class="text-gold-400 font-bold mb-2 flex items-center"><i class="fas fa-map-marker-alt ml-2"></i>عدن</h4>
+                                <ul class="text-gray-300 text-sm space-y-2 list-disc list-inside">
+                                    <li>فندق ومنتجع كراون عدن</li>
+                                </ul>
+                            </div>
+                            <!-- السعودية ومصر -->
+                            <div class="bg-dark-800/50 p-4 rounded-xl border border-white/5 hover:border-gold-500/30 transition">
+                                <h4 class="text-gold-400 font-bold mb-2 flex items-center"><i class="fas fa-map-marker-alt ml-2"></i>مصر والسعودية</h4>
+                                <ul class="text-gray-300 text-sm space-y-2 list-disc list-inside">
+                                    <li><strong class="text-white">مصر:</strong> عرض أزياء رونق لندن بروح اليمن (للمصممة ماري السكري)</li>
+                                    <li><strong class="text-white">جدة:</strong> حفل افتتاح (خاص)</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="bg-gradient-to-br from-dark-800 to-dark-900 p-6 rounded-2xl border border-gold-500/20 relative overflow-hidden">
@@ -286,19 +315,110 @@
                     <div class="mb-6">
                         <div class="flex items-center mb-3">
                             <span class="w-2 h-2 rounded-full bg-gold-400 ml-2"></span>
-                            <h3 class="text-gold-300 font-bold text-lg">غناء</h3>
+                            <h3 class="text-gold-300 font-bold text-lg">غناء (اضغط للاستماع)</h3>
                         </div>
-                        <div class="bg-dark-800/50 rounded-xl p-4 border border-white/5">
-                            <ul class="text-gray-300 text-sm space-y-2.5">
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> حلاه يشدف</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> يُمه وياحنجا</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> يا طير (تتر مسلسل)</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> دلع صنعاني & بحجر الله</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> يا صاحبي & طاسة</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> ملامة & عادي عادي</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> أيوه أنت & آسف بالغلط</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> فوانيس رمضان & ورجع رمضان</li>
-                                <li class="flex items-center hover:text-white transition"><i class="fas fa-play text-xs text-gray-500 ml-2"></i> ما قد خُلق مثل النبي</li>
+                        <div class="bg-dark-800/50 rounded-xl p-3 border border-white/5 max-h-[400px] overflow-y-auto custom-scrollbar">
+                            <ul class="text-gray-300 text-sm space-y-1">
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('JYwynsTUPcg')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">حلاه يشدف</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('4cqaGPLkFeE')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">لابتوحشني</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('c2uImj-90qY')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">يُمه وياحنجا</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('Rdp4ygOkfbM')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">بين اعشقك</span></div>
+                                    <span class="bg-purple-900/40 text-purple-400 text-[10px] px-2 py-0.5 rounded border border-purple-700/50 whitespace-nowrap">كوفر</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('G8NTFGUQyTw')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">ياقمر ياقمر</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('fVWjLydLtyY')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">يا طير (تتر مسلسل)</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('UIIYNMU2iGw')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">مرحبا مسهلا (دويتو حسين محب)</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('_jQfyP_WUIw')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">قال أبو محضار + اشلون حال الربع</span></div>
+                                    <span class="bg-orange-900/40 text-orange-400 text-[10px] px-2 py-0.5 rounded border border-orange-700/50 whitespace-nowrap">جلسة</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('HlTW-GCWxK8')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">دلع صنعاني</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('elvdr80hRP8')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">بحجر الله</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('d53k_XPohUI')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">يا صاحبي</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('ktr0DJeUZqE')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">طاسة</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('9WsSq9F7JSI')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">فوانيس رمضان</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('bTgwrdCadzA')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">ورجع رمضان</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('jaClCVrUAhQ')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">ما قد خُلق مثل النبي</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('YjGSqTVBidM')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">يانسيم الصباح</span></div>
+                                    <span class="bg-purple-900/40 text-purple-400 text-[10px] px-2 py-0.5 rounded border border-purple-700/50 whitespace-nowrap">كوفر</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('snEAISAFCaU')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">ايوه انت</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('iwcHjLT0XCw')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">قلوب سوداء</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('fmQRE3EZ0Lc')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">اسف بالغلط</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('lMW9XSe0LfU')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">هي وهي</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('FbJQlKXFDU0')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">عيد وعاد بعيديه</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('TGV6Bz4mor4')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">كان ظني بك كبير</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('rDMo_45sif0')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">من بعد مزح ولعب</span></div>
+                                    <span class="bg-orange-900/40 text-orange-400 text-[10px] px-2 py-0.5 rounded border border-orange-700/50 whitespace-nowrap">جلسة</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('cNMk8zx7izE')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">كليب (خليهم عالبال)</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
+                                <li class="flex items-center justify-between hover:bg-dark-700 p-2 rounded-lg transition cursor-pointer group" onclick="openVideoModal('l4TQB5WRk6M')">
+                                    <div class="flex items-center truncate"><i class="fas fa-play-circle text-gold-500 ml-2 text-lg group-hover:scale-110 transition"></i><span class="group-hover:text-white transition truncate">عادي عادي</span></div>
+                                    <span class="bg-green-900/40 text-green-400 text-[10px] px-2 py-0.5 rounded border border-green-700/50 whitespace-nowrap">عمل رسمي</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -377,6 +497,58 @@
             <p class="mt-2 text-xs opacity-50">Interactive EPK Design</p>
         </footer>
     </div>
+
+    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-dark-900 border border-gold-500/30 rounded-2xl w-full max-w-4xl overflow-hidden relative shadow-[0_0_50px_rgba(245,158,11,0.2)] transform scale-95 transition-transform duration-300" id="videoModalContent">
+            <!-- Header -->
+            <div class="flex justify-between items-center p-4 border-b border-gray-800 bg-dark-800">
+                <h3 class="text-gold-400 font-bold text-lg flex items-center"><i class="fab fa-youtube text-red-500 ml-2 text-2xl"></i> مشغل الموسيقى</h3>
+                <button onclick="closeVideoModal()" class="text-gray-400 hover:text-white transition w-10 h-10 flex items-center justify-center rounded-full bg-dark-900 hover:bg-red-500/20 border border-gray-700">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <!-- Video Container -->
+            <div class="relative w-full aspect-video bg-black" id="iframeContainer">
+                <!-- iframe will be injected here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const videoModal = document.getElementById('videoModal');
+        const videoModalContent = document.getElementById('videoModalContent');
+        const iframeContainer = document.getElementById('iframeContainer');
+
+        function openVideoModal(videoId) {
+            // Inject the iframe dynamically to prevent background playback when closed
+            iframeContainer.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+            
+            videoModal.classList.remove('hidden');
+            // Force browser reflow to allow transition to work
+            void videoModal.offsetWidth; 
+            
+            videoModal.classList.remove('opacity-0');
+            videoModalContent.classList.remove('scale-95');
+        }
+
+        function closeVideoModal() {
+            videoModal.classList.add('opacity-0');
+            videoModalContent.classList.add('scale-95');
+            
+            // Wait for transition to finish before hiding and clearing iframe
+            setTimeout(() => {
+                videoModal.classList.add('hidden');
+                iframeContainer.innerHTML = ''; // Clear iframe to stop audio
+            }, 300);
+        }
+
+        // Close modal when clicking outside the video box
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+    </script>
 
     <script>
         // Scroll Reveal Animation Script
