@@ -600,23 +600,54 @@
         const videoModalContent = document.getElementById('videoModalContent');
         const iframeContainer = document.getElementById('iframeContainer');
 
+        // إصلاح خطأ YouTube 153 عند تضمين الفيديو داخل الصفحة.
         function openVideoModal(videoId) {
-            // تشغيل الفيديو داخل الموقع عبر Iframe المدمج
+            const isLocalFile = window.location.protocol === 'file:';
+            const params = new URLSearchParams({
+                autoplay: '1',
+                rel: '0',
+                playsinline: '1',
+                modestbranding: '1'
+            });
+
+            // لا نرسل origin=null عند فتح الملف محلياً.
+            if (!isLocalFile && window.location.origin) {
+                params.set('origin', window.location.origin);
+            }
+
+            const youtubeEmbedUrl =
+                `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?${params.toString()}`;
+
             iframeContainer.innerHTML = `
-                <iframe class="absolute top-0 left-0 w-full h-full rounded-b-2xl" 
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin"
+                <iframe
+                    class="absolute top-0 left-0 w-full h-full rounded-b-2xl"
+                    src="${youtubeEmbedUrl}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="origin"
                     allowfullscreen>
                 </iframe>
             `;
-            
+
+            // عند التشغيل كملف محلي، نوفر رابطاً احتياطياً إذا منع المتصفح التضمين.
+            if (isLocalFile) {
+                const fallback = document.createElement('div');
+                fallback.className = 'absolute bottom-3 left-3 right-3 z-20 flex justify-center pointer-events-none';
+                fallback.innerHTML = `
+                    <a href="https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="pointer-events-auto inline-flex items-center gap-2 bg-black/80 hover:bg-red-600 text-white px-5 py-2.5 rounded-full border border-white/20 transition">
+                        <i class="fab fa-youtube text-red-500"></i>
+                        فتح الفيديو على YouTube
+                    </a>
+                `;
+                iframeContainer.appendChild(fallback);
+            }
+
             videoModal.classList.remove('hidden');
-            // Force browser reflow to allow transition to work
-            void videoModal.offsetWidth; 
-            
+            void videoModal.offsetWidth;
             videoModal.classList.remove('opacity-0');
             videoModalContent.classList.remove('scale-95');
         }
